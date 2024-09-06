@@ -4,7 +4,7 @@ function HomePage() {
   return (
       <>
       <h1>MARSHMALLOW QUIZ</h1>
-      <button><NavLink to={'/themes/'}>НАЧАТЬ ИГРУ</NavLink></button>
+      <button><NavLink to={'/themes'}>НАЧАТЬ ИГРУ</NavLink></button>
       </>
   );
 }
