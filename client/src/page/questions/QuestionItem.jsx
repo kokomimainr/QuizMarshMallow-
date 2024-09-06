@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-function QuestionItem({ question }) {
+function QuestionItem({ question ,show, setShow}) {
     const [input, setInput] = useState('');
     const [answer, setAnswer] = useState();
-    const [show, setShow] = useState(false);
+
     const checkAnswer = (e) => {
         e.preventDefault();
-        input === question.answer ? setAnswer(true) : setAnswer(false);
+        input.toLocaleLowerCase() === question.answer.toLocaleLowerCase() ? setAnswer(true) : setAnswer(false);
         setInput("")
+
     }
 const showAnswer = () => {
     setShow(true)

@@ -8,6 +8,7 @@ function QuestionsPage() {
   const { themeId } = useParams();
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
+  const [show, setShow] = useState(false);
   //   let question = questions[count];
 
   const getQuestions = async () => {
@@ -26,13 +27,14 @@ function QuestionsPage() {
   }, []);
   // console.log(questions[count], count);
   const onHandleNext = () => {
+            setShow(false);
     count === questions.length - 1
       ? navigate("/themes")
       : setCount((prev) => prev + 1);
   };
   return (
     <>
-      {questions && <QuestionItem question={questions[count]} />}
+      {questions && <QuestionItem question={questions[count]} show={show} setShow={setShow}/>}
       <button onClick={onHandleNext}>
         {count === questions.length - 1
           ? "Вернуться к темам"
