@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-function QuestionItem({ question ,show, setShow}) {
+function QuestionItem({ question ,show, setShow, setPoints}) {
     const [input, setInput] = useState('');
     const [answer, setAnswer] = useState();
 
     const checkAnswer = (e) => {
         e.preventDefault();
         input.toLocaleLowerCase() === question.answer.toLocaleLowerCase() ? setAnswer(true) : setAnswer(false);
+        input.toLocaleLowerCase() === question.answer.toLocaleLowerCase() ? setPoints((prev) => prev + 5) : setPoints((prev) => prev);
         setInput("")
 
     }
@@ -23,7 +24,7 @@ const showAnswer = () => {
         </form>
         </>)}
       </>
-      {show && (answer ? (<h1>верно!</h1>) : (<h1>Ну ты лашпедусярик 🙈 , правильный ответ : {question.answer}</h1>))}
+      {show && (answer ? (<h1>ХОРООООШ! + 5⭐</h1> ) : (<h1>Ну ты лашпедусярик 🙈 , правильный ответ : {question.answer}</h1>))}
     </>
   );
 }

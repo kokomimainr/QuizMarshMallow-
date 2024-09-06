@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import { axiosRequest } from "../../services/axiosinstance";
 import { useNavigate, useParams } from "react-router";
 import QuestionItem from "./QuestionItem";
-function QuestionsPage() {
+function QuestionsPage({setPoints}) {
   const [questions, setQuestions] = useState([]);
   const { themeId } = useParams();
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const [show, setShow] = useState(false);
-  //   let question = questions[count];
 
   const getQuestions = async () => {
     try {
@@ -25,7 +24,6 @@ function QuestionsPage() {
   useEffect(() => {
     getQuestions();
   }, []);
-  // console.log(questions[count], count);
   const onHandleNext = () => {
             setShow(false);
     count === questions.length - 1
@@ -34,7 +32,7 @@ function QuestionsPage() {
   };
   return (
     <>
-      {questions && <QuestionItem question={questions[count]} show={show} setShow={setShow}/>}
+      {questions && <QuestionItem question={questions[count]} show={show} setShow={setShow} setPoints={setPoints}/>}
       <button onClick={onHandleNext}>
         {count === questions.length - 1
           ? "Вернуться к темам"
