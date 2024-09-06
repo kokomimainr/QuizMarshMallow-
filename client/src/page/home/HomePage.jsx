@@ -1,7 +1,11 @@
 import React from'react';
+import { NavLink } from 'react-router-dom';
 function HomePage() {
   return (
-      <div>HomePage</div>
+      <>
+      <h1>MARSHMALLOW QUIZ</h1>
+      <button><NavLink to={'/themes/'}>НАЧАТЬ ИГРУ</NavLink></button>
+      </>
   );
 }
 
