@@ -1,12 +1,32 @@
-import React from'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { axiosRequest } from "../../services/axiosinstance";
+import ThemeItem from "./ThemeItem";
 function ThemesPage() {
+  const [themes, setThemes] = useState([]);
+
+  const getThemes = async () => {
+    try {
+      const response = await axiosRequest.get("/themes");
+      console.log(response);
+      setThemes(response.data);
+      if (response.status === 200) {
+        console.log(response.data.message);
+      }
+    } catch ({ response }) {
+      console.log(response.data.message);
+    }
+  };
+
+  useEffect(() => {
+    getThemes();
+  }, []);
+
   return (
-      <>
-      <button><NavLink to={'/themes/1'}>тема 1</NavLink></button>
-      <button><NavLink to={'/themes/2'}>тема 2</NavLink></button>
-      <button><NavLink to={'/themes/3'}>тема 3</NavLink></button>
-      </>
+    <>
+      {themes &&
+        themes.map((theme) => <ThemeItem theme={theme} key={theme.id} />)}
+    </>
   );
 }
 
