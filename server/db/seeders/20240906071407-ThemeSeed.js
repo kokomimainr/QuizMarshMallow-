@@ -7,10 +7,10 @@ module.exports = {
       "Themes",
       [
         {
-          title: "Theme 1",
+          title: "Котики 23",
         },
         {
-          title: "Theme 2",
+          title: "Анекдоты 10",
         },
       ],
       {}
